@@ -5,6 +5,8 @@
 
 # Task Tracker CLI
 
+Sample solution for the [Task tracker](https://roadmap.sh/projects/task-tracker) challenge from [Roadmap.sh User Activity](https://roadmap.sh)
+
 A simple Command-Line Interface (CLI) application to manage and track your tasks.
 
 With this tool, you can:

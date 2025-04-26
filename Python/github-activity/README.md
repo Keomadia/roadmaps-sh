@@ -4,6 +4,8 @@
 
 # GitHub Activity CLI
 
+Sample solution for the [Github User Activity](https://roadmap.sh/projects/github-user-activity) challenge from [Roadmap.sh User Activity](https://roadmap.sh)
+
 A simple **Command-Line Interface (CLI)** application to fetch and display the **recent activity** of a GitHub user.
 
 With this tool, you can:

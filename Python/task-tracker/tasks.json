@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "description": "Go to the gym",
+        "status": "todo",
+        "createdAt": "2025-04-26T15:21:02.506445",
+        "updatedAt": "2025-04-26T16:05:02.091221"
+    },
+    {
+        "id": 2,
+        "description": "John Should water the plants",
+        "status": "in-progress",
+        "createdAt": "2025-04-26T15:24:44.765320",
+        "updatedAt": "2025-04-26T15:58:47.735459"
+    },
+    {
+        "id": 3,
+        "description": "Find a good spot to hang out",
+        "status": "in-progress",
+        "createdAt": "2025-04-26T15:24:45.390223",
+        "updatedAt": "2025-04-26T15:59:00.088103"
+    },
+    {
+        "id": 4,
+        "description": "Eat when you can",
+        "status": "todo",
+        "createdAt": "2025-04-26T16:01:15.333780",
+        "updatedAt": "2025-04-26T16:02:20.221288"
+    },
+    {
+        "id": 5,
+        "description": "Buy Groceries",
+        "status": "todo",
+        "createdAt": "2025-04-26T16:01:55.956485",
+        "updatedAt": "2025-04-26T16:01:55.956485"
+    }
+]

@@ -1,12 +1,16 @@
 from task_tracker import storage as db
 from task_tracker import models as obj
 from datetime import datetime
+from rich.console import Console
+from rich.table import Table
+from rich import box
 import time
 
+console = Console()
 
 def add_task(arguments):
     tasks = db.load_tasks()
-    
+
     if tasks:
         max_id = max(task["id"] for task in tasks)
         new_id = max_id + 1
@@ -18,45 +22,43 @@ def add_task(arguments):
         description=arguments[0],
         status='todo',
     )
-    
-    tasks.append(new_task.to_dict()) 
-    db.save_tasks(tasks=tasks)
-    print(f"Task --'{new_task.id}'-- added successfully!")
 
+    tasks.append(new_task.to_dict())
+    db.save_tasks(tasks=tasks)
+    console.print(f"[bold green]Task --'{new_task.id}'-- added successfully![/]")
 
 def reindex_tasks():
     tasks = db.load_tasks()
     tasks.sort(key=lambda task: task["id"])
 
     for index, task in enumerate(tasks, start=1):
-        task["id"] = index   
+        task["id"] = index
 
     db.save_tasks(tasks)
-    
-    
+
 def delete_task(arguments):
     tasks = db.load_tasks()
-    
+
     if not tasks:
-        print("No tasks to delete.")
+        console.print("[bold red]No tasks to delete.[/]")
         return
-    
+
     task_id = int(arguments[0])
     task_to_delete = next((task for task in tasks if task["id"] == task_id), None)
-    
+
     if task_to_delete:
         tasks.remove(task_to_delete)
         db.save_tasks(tasks=tasks)
-        print(f"Task {task_id} deleted successfully!")
-        print("Reindexing tasks...")
+        console.print(f"[bold green]Task {task_id} deleted successfully![/]")
+        console.print("[bold yellow]Reindexing tasks...[/]")
         reindex_tasks()
         time.sleep(2)
-        print("Reindexing done.")
+        console.print("[bold green]Reindexing done.[/]")
         time.sleep(0.6)
-        print("Current tasks -->")
+        console.print("[bold blue]Current tasks -->[/]")
         list_task()
     else:
-        print(f"Task {task_id} not found.")
+        console.print(f"[bold red]Task {task_id} not found.[/]")
 
 def list_task(arguments=None):
     tasks = db.load_tasks()
@@ -69,43 +71,42 @@ def list_task(arguments=None):
         elif arguments[0] == "done":
             tasks = [task for task in tasks if task["status"] == "done"]
         else:
-            print("Invalid argument. Use 'in-progress', 'todo', or 'done'.")
+            console.print("[bold red]Invalid argument. Use 'in-progress', 'todo', or 'done'.[/]")
             return
 
     if not tasks:
-        print("No tasks available.")
+        console.print("[bold red]No tasks available.[/]")
         return
 
     for task in tasks:
         created_time = datetime.fromisoformat(task["createdAt"])
         task["createdAtFormatted"] = created_time.strftime("%Y-%m-%d %H:%M")
 
-    id_width = max(len("ID"), max(len(str(task["id"])) for task in tasks))
-    desc_width = max(len("Description"), max(len(task["description"]) for task in tasks)) + 10
-    status_width = max(len("Status"), max(len(task["status"]) for task in tasks)) + 5
-    created_width = max(len("Created At"), max(len(task["createdAtFormatted"]) for task in tasks)) + 3
-
-    print(f"{'ID'.ljust(id_width)} | {'Description'.ljust(desc_width)} | {'Created At'.ljust(created_width)} | {'Status'.ljust(status_width)} ")
-    print("-" * (id_width + desc_width + status_width + created_width + 9))
-
+    table = Table(show_header=True, header_style="bold magenta", box=box.ROUNDED)
+    table.add_column("ID", justify="center")
+    table.add_column("Description")
+    table.add_column("Created At")
+    table.add_column("Status", justify="center")
 
     for task in tasks:
-        print(
-            f"{str(task['id']).ljust(id_width)} | "
-            f"{task['description'].ljust(desc_width)} | "
-            f"{task['createdAtFormatted'].ljust(created_width)} | "
-            f"{task['status'].capitalize().ljust(status_width)} "
+        table.add_row(
+            str(task["id"]),
+            task["description"],
+            task["createdAtFormatted"],
+            task["status"].capitalize()
         )
+
+    console.print(table)
 
 def update_task(arguments):
     if len(arguments) < 2:
-        print("Error: Not enough arguments. You must provide the task ID and description.")
+        console.print("[bold red]Error: Not enough arguments. You must provide the task ID and description.[/]")
         return
 
     try:
-        id = int(arguments[0]) 
+        id = int(arguments[0])
     except ValueError:
-        print("Error: Invalid task ID. ID must be an integer.")
+        console.print("[bold red]Error: Invalid task ID. ID must be an integer.[/]")
         return
 
     desc = arguments[1]
@@ -115,15 +116,15 @@ def update_task(arguments):
 
     for task in tasks:
         if task["id"] == id:
-            task["description"] = desc 
+            task["description"] = desc
             task["updatedAt"] = datetime.now().isoformat()
             db.save_tasks(tasks=tasks)
-            print(f"Task {id} description updated successfully!")
+            console.print(f"[bold green]Task {id} description updated successfully![/]")
             task_found = True
             break
 
     if not task_found:
-        print(f"Task {id} not found.")
+        console.print(f"[bold red]Task {id} not found.[/]")
 
 def mark_todo_task(arguments):
     return update_status(arguments, "todo")
@@ -136,13 +137,13 @@ def mark_done_task(arguments):
 
 def update_status(arguments, new_status):
     if len(arguments) < 1:
-        print("Error: Task ID is required.")
+        console.print("[bold red]Error: Task ID is required.[/]")
         return
 
     try:
-        id = int(arguments[0])  
+        id = int(arguments[0])
     except ValueError:
-        print("Error: Invalid task ID. ID must be an integer.")
+        console.print("[bold red]Error: Invalid task ID. ID must be an integer.[/]")
         return
 
     tasks = db.load_tasks()
@@ -153,10 +154,10 @@ def update_status(arguments, new_status):
             task["status"] = new_status
             task["updatedAt"] = datetime.now().isoformat()
             db.save_tasks(tasks=tasks)
-            print(f"Task {id} marked as {new_status}!")
+            console.print(f"[bold green]Task {id} marked as {new_status}![/]")
             list_task()
             task_found = True
             break
 
     if not task_found:
-        print(f"Task {id} not found.")
+        console.print(f"[bold red]Task {id} not found.[/]")

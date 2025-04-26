@@ -82,9 +82,10 @@ python cli.py torvalds
 
 ```plaintext
 github-activity-cli/
-├── cli.py                # Main CLI entry point
+├── main.py                
 └── github_activity/
-    └── activity.py        # Logic to fetch and display GitHub user activity
+    └── cli.py      
+    └── activity.py      
 ```
 
 ---

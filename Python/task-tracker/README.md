@@ -1,11 +1,11 @@
-[Project url ](https://roadmap.sh/projects/task-tracker)
+[task-tracker ](https://roadmap.sh/projects/task-tracker)
 
 
 ---
 
 # Task Tracker CLI
 
-Sample solution for the [Task tracker](https://roadmap.sh/projects/task-tracker) challenge from [Roadmap.sh User Activity](https://roadmap.sh)
+Sample solution for the [task-tracker](https://roadmap.sh/projects/task-tracker) challenge from [Roadmap.sh User Activity](https://roadmap.sh)
 
 A simple Command-Line Interface (CLI) application to manage and track your tasks.
 

@@ -1,3 +1,4 @@
+
 ---
 
 # Task Tracker CLI
@@ -123,11 +124,11 @@ $ task-cli list
 
 **Output**:  
 ```
-ID   | Description          | Status      | Created At           | Updated At
----------------------------------------------------------------
-1    | Buy groceries        | todo        | 2025-04-23T15:30:00  | 2025-04-23T15:30:00
-2    | Complete the report  | in-progress | 2025-04-23T16:00:00  | 2025-04-23T16:00:00
-3    | Submit homework      | done        | 2025-04-23T17:00:00  | 2025-04-23T17:30:00
+ID   | Description          | Status      | Created At          
+--------------------------------------------------------------
+1    | Buy groceries        | todo        | 2025-04-23T15:30:00  
+2    | Complete the report  | in-progress | 2025-04-23T16:00:00  
+3    | Submit homework      | done        | 2025-04-23T17:00:00 
 ```
 
 ---
@@ -158,9 +159,9 @@ $ task-cli list completed
 For **todo** tasks:
 
 ```
-ID   | Description        | Status   | Created At           | Updated At
----------------------------------------------------------------
-1    | Buy groceries      | todo     | 2025-04-23T15:30:00  | 2025-04-23T15:30:00
+ID   | Description        | Status   | Created At          
+-----------------------------------------------------------
+1    | Buy groceries      | todo     | 2025-04-23T15:30:00 
 ```
 
 ---

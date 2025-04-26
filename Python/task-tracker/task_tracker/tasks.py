@@ -21,7 +21,7 @@ def add_task(arguments):
     
     tasks.append(new_task.to_dict()) 
     db.save_tasks(tasks=tasks)
-    print(f"Task ID '{new_task.id}' added successfully!")
+    print(f"Task --'{new_task.id}'-- added successfully!")
 
 
 def reindex_tasks():
@@ -69,11 +69,11 @@ def list_task(arguments=None):
         elif arguments[0] == "done":
             tasks = [task for task in tasks if task["status"] == "done"]
         else:
-            print("❌ Invalid argument. Use 'in-progress', 'todo', or 'done'.")
+            print("Invalid argument. Use 'in-progress', 'todo', or 'done'.")
             return
 
     if not tasks:
-        print("🚫 No tasks available.")
+        print("No tasks available.")
         return
 
     for task in tasks:
@@ -99,13 +99,13 @@ def list_task(arguments=None):
 
 def update_task(arguments):
     if len(arguments) < 2:
-        print("❌ Error: Not enough arguments. You must provide the task ID and description.")
+        print("Error: Not enough arguments. You must provide the task ID and description.")
         return
 
     try:
         id = int(arguments[0]) 
     except ValueError:
-        print("❌ Error: Invalid task ID. ID must be an integer.")
+        print("Error: Invalid task ID. ID must be an integer.")
         return
 
     desc = arguments[1]
@@ -118,12 +118,12 @@ def update_task(arguments):
             task["description"] = desc 
             task["updatedAt"] = datetime.now().isoformat()
             db.save_tasks(tasks=tasks)
-            print(f"✅ Task {id} description updated successfully!")
+            print(f"Task {id} description updated successfully!")
             task_found = True
             break
 
     if not task_found:
-        print(f"❌ Task {id} not found.")
+        print(f"Task {id} not found.")
 
 def mark_todo_task(arguments):
     return update_status(arguments, "todo")
@@ -136,13 +136,13 @@ def mark_done_task(arguments):
 
 def update_status(arguments, new_status):
     if len(arguments) < 1:
-        print("❌ Error: Task ID is required.")
+        print("Error: Task ID is required.")
         return
 
     try:
         id = int(arguments[0])  
     except ValueError:
-        print("❌ Error: Invalid task ID. ID must be an integer.")
+        print("Error: Invalid task ID. ID must be an integer.")
         return
 
     tasks = db.load_tasks()
@@ -153,10 +153,10 @@ def update_status(arguments, new_status):
             task["status"] = new_status
             task["updatedAt"] = datetime.now().isoformat()
             db.save_tasks(tasks=tasks)
-            print(f"✅ Task {id} marked as {new_status}!")
+            print(f"Task {id} marked as {new_status}!")
             list_task()
             task_found = True
             break
 
     if not task_found:
-        print(f"❌ Task {id} not found.")
+        print(f"Task {id} not found.")

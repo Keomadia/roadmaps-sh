@@ -3,9 +3,9 @@
         "id": 1,
         "description": "Lunch",
         "amount": 15.0,
-        "createdAt": "2025-04-27",
+        "createdAt": "2025-02-27",
         "createdBy": "18:35:54.587822",
-        "updatedAt": "2025-04-27T18:35:54.587822",
+        "updatedAt": "2025-02-27T18:35:54.587822",
         "month": 2
     },
     {
@@ -24,6 +24,24 @@
         "createdAt": "2025-04-27",
         "createdBy": "18:50:39.099459",
         "updatedAt": "2025-04-27T18:50:39.099459",
+        "month": 4
+    },
+    {
+        "id": 4,
+        "description": "Spent money on Health",
+        "amount": 100.0,
+        "createdAt": "2025-04-27",
+        "createdBy": "19:26:18.550679",
+        "updatedAt": "2025-04-27T19:26:18.550679",
+        "month": 4
+    },
+    {
+        "id": 5,
+        "description": "monthly checkup",
+        "amount": 100.0,
+        "createdAt": "2025-04-27",
+        "createdBy": "19:29:13.865297",
+        "updatedAt": "2025-04-27T19:29:13.865297",
         "month": 4
     }
 ]

@@ -1,72 +1,47 @@
-[github-user-activity](https://roadmap.sh/projects/github-user-activity)
+---
+
+## GitHub Activity CLI
 
 ---
 
 # GitHub Activity CLI
 
-Sample solution for the [github-user-activity](https://roadmap.sh/projects/github-user-activity) challenge from [Roadmap.sh User Activity](https://roadmap.sh)
+Sample solution for the [github-user-activity](https://roadmap.sh/projects/github-user-activity) challenge from [Roadmap.sh](https://roadmap.sh).
 
-A simple **Command-Line Interface (CLI)** application to fetch and display the **recent activity** of a GitHub user.
+A simple and lightweight **Command-Line Interface (CLI)** application to fetch and display the **recent activity** of a GitHub user.
 
-With this tool, you can:
-- Provide a GitHub username.
-- Fetch the user's recent public activity (pushes, stars, issues, forks, etc.).
-- Display the activity cleanly in the terminal.
-- View the first few activities immediately, and press Enter to reveal more.
+Built with **Python**, using only **standard libraries** (`urllib`, `json`) for smooth and clean terminal interaction.
 
 ---
 
-## Features
+## 📦 Features
 
-- **Fetch Recent GitHub Events**: Retrieve a user's public activities (push events, issues, stars, forks, etc.).
-- **CLI Argument**: Pass the GitHub username as a command-line argument.
-- **Pagination**: Display the first 3 events, then show "..." and wait for the user to press Enter to continue.
-- **Clean Output**: Nicely formatted activities for easy reading.
-- **Pure Python**: No external libraries needed (uses built-in `urllib` and `json`).
-
----
-
-## Usage
-
-1. **Run the CLI**:
-
-```bash
-python cli.py <github-username>
-```
-
-Example:
-
-```bash
-python cli.py kamranahmedse
-```
-
-2. **Output Example**:
-
-```
-Output:
-- Pushed 3 commit(s) to kamranahmedse/developer-roadmap
-- Opened a new issue in kamranahmedse/developer-roadmap
-- Starred kamranahmedse/roadmap.sh
-...
-Press Enter to see more...
-- Forked kamranahmedse/free-for-dev
-- Closed an issue in kamranahmedse/another-project
-- WatchEvent on kamranahmedse/roadmap.sh
-...
-```
+- Fetch recent GitHub events (pushes, issues, stars, forks, etc.)
+- Pass GitHub username via CLI arguments
+- Display the first few events, then press **Enter** to view more (pagination)
+- Nicely formatted clean output
+- Pure Python — **no external libraries needed**
 
 ---
 
-## Getting Started
+## 🛠 Requirements
 
-1. **Clone the Repository**:
+- Python 3.x
+- Internet connection
+- No additional packages required
+
+---
+
+## 🚀 How to Use
+
+First, clone the repository and navigate into the project folder:
 
 ```bash
 git clone <repository-url>
 cd github-activity-cli
 ```
 
-2. **Run the CLI**:
+Run the CLI with a GitHub username:
 
 ```bash
 python cli.py <github-username>
@@ -80,37 +55,61 @@ python cli.py torvalds
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-```plaintext
+```
 github-activity-cli/
 ├── main.py                
 └── github_activity/
-    └── cli.py      
+    ├── cli.py      
     └── activity.py      
 ```
 
 ---
 
-## Requirements
+## Output Example
 
-- Python 3.x
-- Internet connection
-- No external libraries needed (uses `urllib` and `json`)
-
----
-
-## Contributing
-
-Feel free to fork this repository and submit pull requests.  
-Issues, suggestions, and improvements are welcome!
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+- Pushed 3 commit(s) to torvalds/linux
+- Starred torvalds/subsurface
+- Opened a new issue in torvalds/tinycc
+...
+Press Enter to see more...
+- Forked torvalds/qemu
+- Closed an issue in torvalds/linux
+...
+```
 
 ---
 
-# 🚀
+## 👨‍💻 Contributing
+
+Feel free to **fork** this repository and **submit pull requests**.  
+Issues, feedback, and suggestions are highly welcome!
+
+---
+
+
+
+## ✨ Preview 
+
+Check Preview.gif to see a quick demo
+
+---
+
+## 👨‍💻 Author
+
+Made with ❤️ by **Keomadia**
+
+---
+## 📃 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🔗 Challenge Source
+
+This project was built for the [GitHub User Activity](https://roadmap.sh/projects/github-user-activity) challenge by [Roadmap.sh](https://roadmap.sh).
+
+---

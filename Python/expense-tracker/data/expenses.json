@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "description": "Lunch",
+        "amount": 15.0,
+        "createdAt": "2025-04-27",
+        "createdBy": "18:35:54.587822",
+        "updatedAt": "2025-04-27T18:35:54.587822",
+        "month": 2
+    },
+    {
+        "id": 2,
+        "description": "Train ticket",
+        "amount": 10.0,
+        "createdAt": "2025-04-27",
+        "createdBy": "18:37:33.839227",
+        "updatedAt": "2025-04-27T18:37:33.839227",
+        "month": 4
+    },
+    {
+        "id": 3,
+        "description": "Class project",
+        "amount": 80.0,
+        "createdAt": "2025-04-27",
+        "createdBy": "18:50:39.099459",
+        "updatedAt": "2025-04-27T18:50:39.099459",
+        "month": 4
+    }
+]

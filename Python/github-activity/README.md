@@ -101,11 +101,11 @@ Check Preview.gif to see a quick demo
 
 Made with ❤️ by **Keomadia**
 
----
-## 📃 License
+<!-- ## 📃 License
 
 This project is licensed under the [MIT License](LICENSE).
 
+--- -->
 ---
 
 ## 🔗 Challenge Source
